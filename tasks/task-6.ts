@@ -7,9 +7,18 @@ enum Status {
   Inactive = "INACTIVE"
 }
 
-function assertNever() {}
+function assertNever(): never {
+  throw new Error('Never');
+}
 
-function handleStatus(status) {
-
+function handleStatus(status: Status): string {
+  switch(status) {
+    case Status.Active:
+      return 'active';
+    case Status.Inactive:
+      return 'inactive';
+    default:
+      return assertNever();
+  }
 }
 
