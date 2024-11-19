@@ -1,0 +1,27 @@
+{
+  "name": "book-app",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "npm-run-all compile:* server:run",
+    "start:node": "npm run compile:tsc & node ./dist/main.js",
+    "compile:tsc": "npx tsc --watch",
+    "compile:html": "cp ./src/index.html ./dist/",
+    "server:run": "live-server ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@types/react": "^18.3.12",
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "react": "^18.3.1"
+  }
+}
