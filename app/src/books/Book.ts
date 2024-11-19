@@ -1,13 +1,13 @@
 import { Book as BookType } from '../type.js';
 
 class Book {
-  private _isbn: string;
+  #isbn: string;
   private _title: string;
   private _author: string;
   private _publicationDate: Date | string;
   
   constructor(book: BookType) {
-    this._isbn = '1234567890';
+    this.#isbn = '1234567890';
     this._title = book.title;
     this._author = book.author;
     this._publicationDate = book.publicationDate;
@@ -15,11 +15,11 @@ class Book {
 
 
   public getISBN(): string {
-    return this._isbn;
+    return this.#isbn;
   }
   
   public getInfo(): string {
-    return `ISBN: ${this._isbn}, Title: ${this._title}, Author: ${this._author}, Publication date: ${this._publicationDate}`;
+    return `ISBN: ${this.#isbn}, Title: ${this._title}, Author: ${this._author}, Publication date: ${this._publicationDate}`;
   }
 
   public renderBook(): HTMLLIElement {

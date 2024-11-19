@@ -13,4 +13,5 @@ class B {
 }
 
 new B('jet').getJet(); // jet
+// @ts-ignore
 new B('jet').#jet; // Property '_jet' is private and only accessible within class 'B'.

@@ -14,3 +14,5 @@ const product: Product = {
   id: 1,
   price: 100,
 };
+
+const user = product as unknown as User;
