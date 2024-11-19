@@ -5,7 +5,10 @@
 // lub padLeft("abc", "Hello") => "abcHello" gdy pierwszy argument jest stringiem
 
 function padLeft(padding: number | string, input: string): string {
-  return "_".repeat(padding);
-  // Argument of type 'string | number' is not assignable to parameter of type ‚number'.
-  // Type 'string' is not assignable to type 'number'.
+  if (typeof padding === 'number') {
+    return `${"_".repeat(padding)}${input}`;
+  }
+
+  return `${padding}${input}`;
 }
+ 
