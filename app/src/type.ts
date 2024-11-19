@@ -9,6 +9,7 @@ export enum BookCategory {
 export type BookTitle = string;
 
 export type Book = {
+  id?: number,
   title: BookTitle,
   author: string,
   publicationDate: Date | string,
