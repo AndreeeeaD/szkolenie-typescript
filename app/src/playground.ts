@@ -107,3 +107,48 @@
 // if (person instanceof Person) {
 //   console.log(person.name);
 // }
+
+type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
+
+const myFunction: MyFunctionType = () => 'Hello';
+type MyFunctionType = () => string;
+type MyAsycFuntionType = () => Promise<number>;
+
+type ReturnTypeOfMyFunction = ReturnType<MyFunctionType>;
+type ReturnTypeOfMyAsyncFunction = ReturnType<MyAsycFuntionType>;
+
+const promise = Promise.resolve({});
+
+type PromiseValue<T> = T extends Promise<infer R> ? R : never;
+
+type Test = PromiseValue<typeof promise>
+
+type Invoice = {
+  type: 'INVOICE',
+  number: string,
+  date: Date
+  positions: {
+    name: string
+    price: number
+    quantity: number
+  }[],
+}
+ 
+type Bill = {
+  type: 'BILL',
+  date: Date,
+  totalPrice: number
+}
+
+type CompanyPurchase = Invoice | Bill;
+
+const getPrice = (purchase: CompanyPurchase): number => {
+  switch(purchase.type) {
+    case 'INVOICE':
+      return purchase.positions.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    case 'BILL':
+      return purchase.totalPrice;
+    default:
+      return 0;
+  }
+}
