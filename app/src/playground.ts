@@ -152,3 +152,70 @@ const getPrice = (purchase: CompanyPurchase): number => {
       return 0;
   }
 }
+
+enum Tesla {
+  Model3 = 'Model 3',
+  ModelS = 'Model S',
+  ModelX = 'Model X',
+  ModelY = 'Model Y',
+}
+
+enum FakeTesla {
+  Model3 = 'Model 3',
+  ModelS = 'Model S',
+  ModelX = 'Model X',
+  ModelY = 'Model Y',
+}
+
+declare let mytesla: Tesla;
+declare let myFakeTesla: FakeTesla;
+
+// mytesla = myFakeTesla;
+
+function getWoodenWall(): any {
+  return 2 * 10;
+}
+
+enum Wall {
+  Brick,
+  Wood = 10,
+  Concrete,
+}
+
+const myWallObj = {
+  'Brick': 0,
+  'Wood': 10,
+  'Concrete': 11,
+  0: 'Brick',
+  10: 'Wood',
+  11: 'Concrete',
+}
+
+let myWall: Wall = Wall.Brick; // 0
+
+Wall[10] 
+
+const enum Wall2 {
+  Brick,
+  Wood = 10,
+  Concrete,
+}
+
+let myWall2: Wall2 = Wall2.Wood; // 10
+
+const awalsls2 = [ Wall2.Brick, Wall2.Wood, Wall2.Concrete ];
+const awalsls2res = [ 0 /* Brick */, 10 /* Wood */, 11 /* Concrete */ ];
+
+type Player = {
+  readonly name: string;
+  xp?: number;
+}
+
+type Player2 = {
+  -readonly [K in keyof Player]-?: 
+    K extends 'xp'
+      ? boolean 
+      : K extends 'name'
+        ? string[]
+        : never;
+}
