@@ -219,3 +219,25 @@ type Player2 = {
         ? string[]
         : never;
 }
+
+class TestClass {
+  name: string = 'Mateusz';
+
+  getName(test: string): string {
+    return this.name;
+  }
+}
+
+type FunctionKeys<T> = {
+  [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never;
+}[keyof T];
+
+type Params<T, K extends keyof T> = T[K] extends (...args: infer P) => any ? P : never; // Wyciąga parametry
+
+type Return<T, K extends keyof T> = T[K] extends (...args: any[]) => infer R ? R : never; // Wyciąga zwracany typ
+
+type ClassType<T> = {
+  [K in FunctionKeys<T>]: (...params: Params<T, K>) => Return<T, K>;
+};
+
+type TestClassType = ClassType<TestClass>;
