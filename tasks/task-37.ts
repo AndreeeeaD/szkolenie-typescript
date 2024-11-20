@@ -6,3 +6,5 @@ function getBookInfo(
   pages: number,
   isRead: boolean,
 ) {}
+
+type BookInfo = Parameters<typeof getBookInfo>;
