@@ -241,3 +241,17 @@ type ClassType<T> = {
 };
 
 type TestClassType = ClassType<TestClass>;
+
+
+
+const a = Symbol("UserId");
+
+const b = Symbol("UserId");
+
+
+const SECRET_KEY = Symbol('secretKey');
+
+const user = {
+  name: 'Alice',
+  [SECRET_KEY]: '12345', // Ukryta właściwość
+};
