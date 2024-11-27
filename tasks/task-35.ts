@@ -21,3 +21,22 @@ const books: BookInfo = {
     title: 'Title',
   }
 };
+
+type Action<T = string, P = {}> = { type: T, payload: P }
+
+type Store = {
+  dispatch<T, P>(action: Action<T, P>): void;
+};
+
+declare const store: Store;
+
+const INCREMENT_COUNTER_ACTION = 'INCREMENT COUNTER';
+
+const incrementCounter = (
+  value: number
+): Action<
+  typeof INCREMENT_COUNTER_ACTION,
+  { value: number }
+> => ({ type: INCREMENT_COUNTER_ACTION, payload: { value }})
+
+store.dispatch(incrementCounter(10));
